@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Enquiry
+{% endblock %}
+
+{% block content %}
+<style></style>
+<div class="fs-2 text-center"> Contact <b class="text-color">Us <i class="fa-solid fa-location-dot"></i></b>
+</div>
+<center><hr style="width:300px; height:3px; color:#FF8800;"></center>
+
+
+<div class="container-fluid newSection bg-light">
+
+    <p class="sectionContent text-center">
+        <b> You may contact us by contact number or filling in this form any time you need professional support or have any question.</b>
+    </p>
+    <div class="container bg-white rounded pb-5 pl-5 pr-5 pt-3">
+        <div class="col text-center">
+
+        </div>
+        <div class="row">
+            <div class="col-sm-7 mt-4 bg-bcolor p-5">
+
+                <h4 class="divHeading text-white">Send Your <b class="text-color">Message</b> </h4>
+                {% if m %}
+                <div class="alert alert-success">Your Message Send Successfully..!</div>
+                {% endif %}
+                <form class="form" method="POST"  action="/user/enquiry/" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="mb-0 mt-3">Your Name :</label>
+                            <input type="text" name="name" class="form-control input" placeholder="Enter Your Name*" required="" pattern="[A-Za-z .]{3,50}" title="Enter your name (Only valid name acceptable.)">
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="mb-0 mt-3">Your Contact :</label>
+                            <input type="text" name="mob" class="form-control input" placeholder="Enter Your Contact Number*" required="" pattern="[6789]{1}[0-9]{9}" title="Enter your valid contact number">
+                        </div>
+                        <div class="col-sm-12">
+                            <label class="mb-0 mt-3">Your Email :</label>
+                            <input type="email" name="email" class="form-control input" placeholder="Enter Your Email*" required="" title="Enter your email.">
+                        </div>
+                        <div class="col-sm-12">
+                            <label class="mb-0 mt-3">Your Message :</label>
+                            <textarea class="form-control textarea" rows="4" name="msg" placeholder="Type Your Message Here*" required=""></textarea>
+                        </div>
+                        <div class="col-sm-12 mt-3">
+                            <input type="submit" class="divBtn btn btn-outline-dark bg-ocolor text-white" name="submit" value="SEND MESSAGE">
+                            <span id="error"></span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-sm-5 mt-4 bg-bcolor p-5">
+                <div class="col contactLocation">
+                    <center>
+                    <h4 class="divHeading text-color">Contact Info</h4>
+                        <center><hr style="width:250px; height:3px;color:orange;"></center>
+                    <div class="contact">
+                        <i class="fas fa-map-marker-alt text-color"></i>
+                        <strong class="text-color">Office Address</strong>
+                        <p class="text-white">
+                            House No 72, Near jio tower,<br />
+                            Rudain road, Samauddinpur,<br />
+                            Kampil, Farrukhabad <br />
+                            Uttar Pradesh 209505
+                        </p>
+                    </div>
+                    <div class="contact text-color">
+                        <i class="fas fa-phone"></i>
+                        <strong>Call Us</strong>
+                        <p>
+                            <a href="tel:+91 7451036786">+91 7451036786</a></br>
+                            <a href="tel:+91 6306562553">+91 6306562553</a>
+                        </p>
+                    </div>
+                    <div class="contact text-color">
+                        <i class="far fa-envelope"></i>
+                        <strong>Mail Us</strong>
+                        <p>
+                            <a href="mailto:afjankhan9440@gmail.com">afjankhan9440@gmail.com</a></br>
+                            <a href="mailto:mohdafjan0786@gmail.com">mohdafjan0786@gmail.com</a>
+                        </p></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid newSection">
+    <h3 class="sectionTitle">Find us on <span class="themeText text-color">Google Map</span></h3>
+    <hr style="width:400px; height:3px; color:#FF8800;">
+    <p class="sectionContent">
+        View us on Google map easily
+    </p>
+   <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14233.147490060268!2d81.0368211!3d26.8943893!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xefa15dcab8567867!2sTHE%20URBANCART!5e0!3m2!1sen!2sin!4v1662092251577!5m2!1sen!2sin" width="1300" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+    </div>
+
+{% endblock %}

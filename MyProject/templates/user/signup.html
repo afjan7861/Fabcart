@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Signup
+{% endblock %}
+
+{% block content %}
+<style>
+    .txt{
+    height:50px;
+    margin-bottom:15px;
+    }
+    .txta{
+    height:80px;
+    margin-bottom:15px;
+    }
+</style>
+<div class="fs-2 text-center"> Register <b class="text-color">Here.. <i class="fa-solid fa-user-plus"></i>
+</b></div><center><hr style="width:300px; height:3px;"></center></br>
+
+<div class="row" style="background:#e2d2b8;">
+<div class="col-sm-1"></div>
+<div class="col-sm-10 my-5">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 rounded-3" style="background-color:#a4a9af; box-shadow:10px 15px black;"></br>
+            <form class="p-3" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+<div class="input-group mb-3 text-center">
+                <i class="input-group-text bg-ocolor text-light">
+                <i class="fa-solid fa-user"></i>
+                </i>
+                <input type="text" name="name" class="form-control" required placeholder="Enter Name...">
+            </div>
+            <div class="input-group mb-3 text-center">
+                <i class="input-group-text bg-ocolor text-light">
+                <i class="fa-solid fa-envelope"></i>
+                </i>
+                <input type="email" name="email" class="form-control" required placeholder="Enter Email...">
+            </div>
+            <div class="input-group mb-3 text-center">
+                <i class="input-group-text bg-ocolor text-light">
+                <i class="fa-solid fa-phone"></i>
+                </i>
+                <input type="number" name="mobile" class="form-control" required placeholder="Enter Mobile...">
+            </div>
+            <div class="input-group mb-3 text-center">
+                <i class="input-group-text bg-ocolor text-light">
+                    <i class="fa-solid fa-lock"></i>
+                </i>
+                <input type="password" name="passwd" class="form-control" required placeholder="Enter Password...">
+            </div>
+             <div class="input-group mb-3">
+            <i class="input-group-text bg-ocolor text-light">
+               <i class="fa-solid fa-message"></i>
+            </i>
+            <textarea name="address" class="form-control" required placeholder="Enter Address..."></textarea>
+        </div>
+            <div class="input-group mb-3 text-center">
+                <i class="input-group-text bg-ocolor text-light">
+                <i class="fa-regular fa-image"></i>
+                </i>
+                <input type="file" name="ppic" class="form-control" required placeholder="Upload Picture..">
+            </div> <br/>
+            <input type="submit" value="Register" class="form-control bg-ocolor text-white"/>
+        </form></br>
+            </div>
+        <div class="col-sm-2"></div>
+        </div>
+    </div>
+     <div class="col-sm-1"></div>
+</div>
+<div class="col-sm-c4"></div>
+{% endblock %}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet"/>
+    <link href="{% static 'css/all.css'%}" rel="stylesheet"/>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <style>
+        .bg-bcolor
+        {
+        background:#212121;
+        }
+        .bg-ocolor
+        {
+        background:#FF8800;
+        }
+        .text-color
+        {
+        color:#FF8800;
+        }
+        .ht1:hover
+        {
+        color:white;
+        background:black;
+        border-radius:10px;
+        box-shadow:0px 0px 20px black;
+        }
+        .nav-link{
+        color:white;
+        }
+        #menu ul li a
+        {
+        color:white;
+        }
+        .ufooter
+        {
+        min-height:300px;
+        border-bottom:1px solid white;
+        color:white;
+        padding:10px;
+        }
+        .bfooter
+        {
+        min-height:50px;
+        font-size:22px;
+        text-align:center;
+        line-height:50px;
+        color:blue;
+        }
+        .w
+        {
+        background:url("{% static 'images/womens-online.jpg' %}");
+        background-size:100% 100%;
+        min-height:300px;
+        padding-top:100px;
+        }
+        .m
+        {
+        background:url("{% static 'images/Banner-Mens.jpg' %}");
+        background-size:100% 100%;
+        min-height:300px;
+        padding-top:100px;
+        }
+        .k
+        {
+        background:url("{% static 'images/istockphoto.jpg' %}");
+        background-size:100% 100%;
+        min-height:300px;
+        padding-top:100px;
+        }
+        .btn1
+        {
+        background:#FF8800;
+        transform:translate(50% 50%);
+
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row bg-bcolor fs-4 text-light text-center p-2">
+    <div class="col-sm-4">
+        <i class="fa-solid fa-phone text-success fa-spin"></i>
+       <b class="fs-5"> +91,7451036786</b>
+</div>
+ <div class="col-sm-4">
+    <i class="fw-bold fs-5">The Urban</i><b class="fs-4 text-color ">Cart India
+     <i class="fa-solid fa-cart-arrow-down"></i></b>
+     </div>
+  <div class="col-sm-4">
+     <a href="https://www.facebook.com/mohammad.afjan"> <i class="fa-brands fa-bounce text-primary fa-facebook"></i></a>&nbsp &nbsp
+      <a href="https://www.youtube.com"><i class="fa-brands fa-bounce text-danger fa-youtube"></i></a>&nbsp &nbsp
+      <a href="https://www.instagram.com/A_f_j_a_n_0786"><i class="fa-brands fa-bounce text-danger fa-instagram"></i></a>&nbsp &nbsp
+      <a href="https://www.twitter.com/@mohd_afjan"><i class="fa-brands fa-bounce text-primary fa-twitter"></i></a>
+  </div>
+  </div>
+    <div class="row header text-center" style="background:#e2d2b8;">
+        <div class="col-sm-4">
+            <img class="col-sm-6 img-responsive w-25" src="{% static 'images/logo2.png' %}">
+        </div>
+        <div class="col-sm-4 pt-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="search..."/>
+                <i class="input-group-text text-white bg-ocolor"><i class="fa-solid fa-magnifying-glass"></i> </i>
+            </div>
+        </div>
+        <div class="col-sm-4 pt-4">
+            <a href="/user/showcart/" class="btn text-white bg-ocolor">
+                Cart <i class="fa-solid fa-bounce text-white fa-cart-arrow-down"></i>
+
+                <b class="badge bg-dark">
+                   {{cart}}
+                    </b>
+            </a>
+            {% if request.session.userid %}
+            <b>{{ request.session.userid }}</b>
+            <img src="/{{request.session.userpic}}"style="max-height:50px; border-radius:50%;" class="img-thumbnail"/>
+            {% else %}
+            <b>Guest User</b>
+            <img src="{% static 'profile/default.png' %}"style="max-height:50px;" class="img-thumbnail"/>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row menu bg-ocolor  " style="min-height:45px;">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <!-----start menu-->
+            <nav class="navbar navbar-expand-lg" id="menu bg-dark">
+  <div class="container-fluid text-light ">
+    <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa-solid fa-bars fs-4 align-center btn btn-outline-light"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item ">
+          <a class="nav-link active ht1" aria-current="page" href="/user/index/"><i class="fa-solid fa-house text-white"></i> Home</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link active ht1" aria-current="page" href="/user/about/"><i class="fa-solid fa-circle-info text-white"></i> About us</a>
+        </li>
+          </li>
+        <li class="nav-item dropdown ht1">
+          <a class="nav-link dropdown-toggle ht1" href="/user/product/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-store"></i> Product
+          </a>
+          <ul class="dropdown-menu bg-ocolor ">
+            <li><a class="dropdown-item" href="/user/mens/">Men's</a></li>
+            <li><a class="dropdown-item" href="/user/womens/">Women's </a></li>
+            <li><a class="dropdown-item" href="/user/kids/">Kid's </a></li>
+
+          </ul>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link ht1" href="/user/myorder/"><i class="fa-solid fa-bag-shopping"></i> My Orders</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link ht1" href="/user/enquiry/"><i class="fa-solid fa-circle-question"></i> Enquiry</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link active ht1" aria-current="page" href="/user/profile/"><i class="fa-solid fa-user text-white"></i> My Profile</a>
+        </li>
+          {% if request.session.userid %}
+          <li class="nav-item">
+          <a class="nav-link ht1" href="/user/signout/"><i class="fa-solid fa-right-to-bracket"></i> Sign out</a>
+        </li>
+
+          {% else %}
+        <li class="nav-item">
+          <a class="nav-link ht1" href="/user/signin/"><i class="fa-solid fa-user-plus"></i> Sign in</a>
+        </li>
+          {% endif %}
+ <li class="nav-item">
+          <a class="nav-link ht1" href="/user/signup/"><i class="fa-solid fa-right-to-bracket"></i> Sign up</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+        </div>
+        <!-----end menu--->
+        <div class="col-sm-2"></div>
+
+    </div>
+
+
+    <div class="row product">
+        <div class="col-sm-12">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="row message"></div>
+
+    <!-- start uFooter -->
+    <div class="row ufooter pt-3 bg-bcolor border-1">
+    <div class="container-fluid footerTop">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 ftrinfo">
+
+
+                    <img class="img-responsive"src="{% static 'images/gem.png' %}" style="height:70px;" /></br> </br>
+                    <img class="img-responsive" src="{% static 'images/start.png' %}" style="height:70px;" /></br> </br>
+                    <a href="https://play.google.com/store/apps/details?id=com.techpile">
+                        <img class="img-responsive" src="{% static 'images/google-play-logo-featured.png' %}" style="height:70px;" />
+                    </a>
+                </div>
+
+                <div class="col-sm-4 ftrinfo">
+                    <h4 class="ftHeading text-color"><b>Contact Address</b></h4>
+                    <hr style="width:200px; height:3px;">
+                   <p>
+                            House No 72, Near jio tower,<br />
+                            Rudain road, Samauddinpur,<br />
+                            Kampil, Farrukhabad <br />
+                            Uttar Pradesh 209505
+                        </p>
+                    <p>
+                        <a style="text-decoration:none;" class="text-white" href="tel:+91 7451036786"><i class="fas fa-phone text-success"></i> +91-7451036786</a><br />
+                        <a style="text-decoration:none;" class="text-white" href="tel:+91 6306562553"><i class="fas fa-phone text-success"></i> +91-6306562553</a><br />
+                        <a style="text-decoration:none;" class="text-white" href="mailto:afjankhan9440@gmail.com" target="_blank"><i class="far fa-envelope"></i> afjankhan9440@gmail.com</a>
+                    </p>
+                </div>
+                <div class="col-sm-4 ftrinfo">
+                    <i class="fw-bold fs-5">The Urban</i><b class="fs-4 text-color ">Cart India
+     <i class="fa-solid fa-cart-arrow-down"></i></b>
+                    <hr style="width:250px; height:3px;">
+                    <p>The UrbanCart India is a best <b>Shoping Plateform</b> and <b>Here you can get more Discounted sales</b> on this and the quality of our product is best.</p>
+                    <h5 class="ftHeading" style="font-size: 16px;">Stay Connected</h5>
+                    <div class="ftrSocial">
+                        <a href="https://www.facebook.com/mohammad.afjan" title="Facebook" target="_blank"><i class="fab fa-facebook-f text-primary fa-2x me-2"></i></a>
+                        <a href="https://twitter.com/@mohd_afjan" title="Twitter" target="_blank"><i class="fab fa-twitter text-primary fa-2x me-2"></i></a>
+                        <a href="https://www.instagram.com/A_f_j_a_n_0786" title="Instagram" target="_blank"><i class="fab fa-instagram text-danger fa-2x me-2"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=+917451036786" title="Whatsapp" target="_blank"><i class="fab fa-whatsapp text-success fa-2x me-2"></i></a>
+                        <a href="https://www.youtube.com" title="Youtube" target="_blank"><i class="fab fa-youtube text-danger fa-2x"></i></a>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+
+
+    </div>
+
+    </div>
+    <!----end ufooter--->
+    <div class="row bfooter bg-bcolor">
+
+        <div class="col-sm-12 text-center text-white">
+           Copyright &copy; 2022 Design and Developed by ( MOHD AFJAN ) and Techpile Pvt Ltd.
+       </div>
+
+ </body>
+</html>

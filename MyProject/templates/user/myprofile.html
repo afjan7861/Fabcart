@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Myprofile
+{% endblock %}
+
+{% block content %}
+<script src="{% static 'js/jquery-3.6.1.min.js' %}"></script>
+<script>
+   $(document).ready(function(){
+   $("#btne").click(function(){
+   $(".uform").slideToggle(4000)
+   })
+   })
+</script>
+{% if not request.session.userid %}
+<script>
+    alert('You have login first...')
+    location.href="/user/signin/"
+</script>
+{% endif %}
+<div class="fs-2 text-center"> My <b class="text-color">Profile <i class="fa-solid fa-user"></i></b>
+    <center><hr style="width:300px; height:3px;"></center>
+</div>
+<div class="row bg-ocolor">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="row my-3">
+            <!----start card---->
+            {% for x in mydata %}
+            <div class="card mb-3 w-100" style="background:#e2d2b8; box-shadow:10px 15px gray;">
+  <div class="row g-0">
+    <div class="col-md-4 p-4">
+      <img src="/{{x.ppic}}"style="min-height:200px;" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{x.name}}</h5>
+        <p class="card-text">
+            <b>Mobile :</b>{{x.mobile}}</br>
+            <b>Email :</b>{{x.email}}</br>
+            <b>Password :</b>{{x.passwd}}</br>
+            <b>Address :</b>{{x.address}}</br> </br>
+            <a href="#" id="btne" class="btn btn-outline-primary">Edit Profile</a>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+            {% endfor %}
+            <!----end card---->
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<!---form----->
+<style>
+    .txt{
+    height:50px;
+    margin-bottom:15px;
+    }
+    .txta{
+    height:80px;
+    margin-bottom:15px;
+    }
+    .uform
+    {
+    display:none;
+    }
+</style>
+
+<div class="row bg-ocolor">
+
+<div class="col-sm-12 mx-auto uform">
+    <div class="row my-4">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 rounded-3" style="background-color:#e2d2b8; box-shadow:5px 10px #a4a9af;"></br>
+            <form class="p-3" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+<div class="input-group mb-3 text-center">
+                <i class="input-group-text bg-ocolor text-light">
+                <i class="fa-solid fa-user"></i>
+                </i>
+                <input type="text" name="name" class="form-control" required placeholder="Enter Name...">
+            </div>
+
+            <div class="input-group mb-3 text-center">
+                <i class="input-group-text bg-ocolor text-light">
+                <i class="fa-solid fa-phone"></i>
+                </i>
+                <input type="number" name="mobile" class="form-control" required placeholder="Enter Mobile...">
+            </div>
+            <div class="input-group mb-3 text-center">
+                <i class="input-group-text bg-ocolor text-light">
+                    <i class="fa-solid fa-lock"></i>
+                </i>
+                <input type="password" name="passwd" class="form-control" required placeholder="Enter Password...">
+            </div>
+             <div class="input-group mb-3">
+            <i class="input-group-text bg-ocolor text-light">
+               <i class="fa-solid fa-message"></i>
+            </i>
+            <textarea name="address" class="form-control" required placeholder="Enter Address..."></textarea>
+        </div>
+            <div class="input-group mb-3 text-center">
+                <i class="input-group-text bg-ocolor text-light">
+                <i class="fa-regular fa-image"></i>
+                </i>
+                <input type="file" name="ppic" class="form-control" required placeholder="Upload Picture..">
+            </div> <br/>
+            <input type="submit" value="Register" class="form-control bg-ocolor text-white"/>
+        </form></br>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!---end form----->
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Signin
+{% endblock %}
+
+{% block content %}
+<style></style>
+<div class="fs-2 text-center"> Login <b class="text-color">Here.. <i class="fa-solid fa-key"></i></b>
+    <center><hr style="width:300px; height:3px;"></center>
+</div>
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 mb-5">
+        <form method="post" class="rounded-3 p-5" style="background-color:#e2d2b8; box-shadow:5px 10px #a4a9af;">
+            {% csrf_token %}
+            <div class="input-group mb-3 text-center">
+                <i class="input-group-text bg-ocolor text-light">
+                <i class="fa-solid fa-envelope"></i>
+                </i>
+           <input type="email" class="form-control" required placeholder="Enter Your Email.." name="email">
+            </div></br>
+            <div class="input-group mb-3 text-center">
+                <i class="input-group-text bg-ocolor text-light">
+                    <i class="fa-solid fa-lock"></i>
+                </i>
+           <input type="password" class="form-control" required placeholder="Enter Your Password.." name="passwd">
+            </div></br>
+            <input type="submit" class="form-control bg-ocolor text-white" value="Login">
+        </form>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+
+{% endblock %}
